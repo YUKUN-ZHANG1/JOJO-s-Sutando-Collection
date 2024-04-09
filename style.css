@@ -33,7 +33,7 @@ body {
 }
 
 .card-content {
-    padding: 20px;
+    padding: 30px;
     font-family: "Verdana";
     color: #777;
 }
@@ -41,6 +41,11 @@ body {
 .card-content h2 {
     margin-top: 0;
     font-size: 20px;
+}
+
+.card-content h3 {
+    margin-bottom: 0;
+    font-size: 15px;
 }
 
 .card img {
