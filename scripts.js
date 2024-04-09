@@ -265,7 +265,7 @@ function quoteAlert() {
 }
 
 function removeLastCard() {
-    standsArray.pop.pop(); // Remove last item in titles array
+    standsArray.pop(); // Remove last item in titles array
     showCards(); // Call showCards again to refresh
 }
 
