@@ -24,10 +24,6 @@
  */
 
 
-const FRESH_PRINCE_URL = "https://upload.wikimedia.org/wikipedia/en/3/33/Fresh_Prince_S1_DVD.jpg";
-const CURB_POSTER_URL = "https://m.media-amazon.com/images/M/MV5BZDY1ZGM4OGItMWMyNS00MDAyLWE2Y2MtZTFhMTU0MGI5ZDFlXkEyXkFqcGdeQXVyMDc5ODIzMw@@._V1_FMjpg_UX1000_.jpg";
-const EAST_LOS_HIGH_POSTER_URL = "https://static.wikia.nocookie.net/hulu/images/6/64/East_Los_High.jpg";
-
 const STAR_PLATINUM = "https://static.jojowiki.com/images/thumb/c/ca/latest/20200927002609/Star_Platinum_SC_Infobox_Anime.png/800px-Star_Platinum_SC_Infobox_Anime.png";
 const MAGICIANS_RED = "https://static.jojowiki.com/images/4/48/latest/20220916201225/Magician%27s_Red_Infobox_Anime.png";
 const HERMIT_PURPLE = "https://static.jojowiki.com/images/c/c1/latest/20191015212906/Hermit_Purple_SC_Infobox_Manga.png";
@@ -57,40 +53,184 @@ const CHARIOT_REQUIEM = "https://static.jojowiki.com/images/1/12/latest/20211210
 const KING_CRIMSON = "https://static.jojowiki.com/images/thumb/c/c6/latest/20191015213856/King_Crimson_Infobox_Anime.png/800px-King_Crimson_Infobox_Anime.png";
 
 
-// This is an array of strings (TV show titles)
-let titles = [
-    "Fresh Prince of Bel Air",
-    "Curb Your Enthusiasm",
-    "East Los High"
+
+let standsArray = [
+  {
+    standName: "Star Platinum",
+    characterName: "Jotaro Kujo",
+    imageURL: STAR_PLATINUM,
+    debutSeasons: [3, 4]
+  },
+  {
+    standName: "Magician's Red",
+    characterName: "Muhammad Avdol",
+    imageURL: MAGICIANS_RED,
+    debutSeasons: [3]
+  },
+  {
+    standName: "Hermit Purple",
+    characterName: "Joseph Joestar",
+    imageURL: HERMIT_PURPLE,
+    debutSeasons: [3, 4]
+  },
+  {
+    standName: "Hierophant Green",
+    characterName: "Noriaki Kakyoin",
+    imageURL: HIEROPHANT_GREEN,
+    debutSeasons: [3]
+  },
+  {
+    standName: "Silver Chariot",
+    characterName: "Jean Pierre Polnareff",
+    imageURL: SILVER_CHARIOT,
+    debutSeasons: [3]
+  },
+  {
+    standName: "The Fool",
+    characterName: "Iggy",
+    imageURL: THE_FOOL,
+    debutSeasons: [3]
+  },
+  {
+    standName: "The World",
+    characterName: "DIO",
+    imageURL: THE_WORLD,
+    debutSeasons: [3]
+  },
+  {
+    standName: "Crazy Diamond",
+    characterName: "Josuke Higashikata",
+    imageURL: CRAZY_DIAMOND,
+    debutSeasons: [4]
+  },
+  {
+    standName: "The Hand",
+    characterName: "Okuyasu Nijimura",
+    imageURL: THE_HAND,
+    debutSeasons: [4]
+  },
+  {
+    standName: "Echoes ACT 1",
+    characterName: "Koichi Hirose",
+    imageURL: ECHOES_ACT1,
+    debutSeasons: [4]
+  },
+  {
+    standName: "Echoes ACT 2",
+    characterName: "Koichi Hirose",
+    imageURL: ECHOES_ACT2,
+    debutSeasons: [4]
+  },
+  {
+    standName: "Echoes ACT 3",
+    characterName: "Koichi Hirose",
+    imageURL: ECHOES_ACT3,
+    debutSeasons: [4，5]
+  },
+  {
+    standName: "Heaven's Door",
+    characterName: "Rohan Kishibe",
+    imageURL: HEAVENS_DOOR,
+    debutSeasons: [4]
+  },
+  {
+    standName: "Killer Queen",
+    characterName: "Yoshikage Kira",
+    imageURL: KILLER_QUEEN,
+    debutSeasons: [4]
+  },
+  {
+    standName: "Sheer Heart Attack",
+    characterName: "Yoshikage Kira",
+    imageURL: SHEER_HEART_ATTACK,
+    debutSeasons: [4]
+  },
+  {
+    standName: "Killer Queen Bites the Dust",
+    characterName: "Yoshikage Kira",
+    imageURL: BITES_THE_DUST,
+    debutSeasons: [4]
+  },
+  {
+    standName: "Gold Experience",
+    characterName: "Giorno Giovanna",
+    imageURL: GOLD_EXPERIENCE,
+    debutSeasons: [5]
+  },
+  {
+    standName: "Gold Experience Requiem",
+    characterName: "Giorno Giovanna",
+    imageURL: GOLD_EXPERIENCE_REQUIEM,
+    debutSeasons: [5]
+  },
+  {
+    standName: "Sticky Fingers",
+    characterName: "Bruno Bucciarati",
+    imageURL: STICKY_FINGERS,
+    debutSeasons: [5]
+  },
+  {
+    standName: "Moody Blues",
+    characterName: "Leone Abbacchio",
+    imageURL: MOODY_BLUES,
+    debutSeasons: [5]
+  },
+  {
+    standName: "Sex Pistols",
+    characterName: "Guido Mista",
+    imageURL: SEX_PISTOLS,
+    debutSeasons: [5]
+  },
+  {
+    standName: "Aerosmith",
+    characterName: "Narancia Ghirga",
+    imageURL: AEROSMITH,
+    debutSeasons: [5]
+  },
+  {
+    standName: "Purple Haze",
+    characterName: "Pannacotta Fugo",
+    imageURL: PURPLE_HAZE,
+    debutSeasons: [5]
+  },
+  {
+    standName: "Spice Girl",
+    characterName: "Trish Una",
+    imageURL: SPICE_GIRL,
+    debutSeasons: [5]
+  },
+  {
+    standName: "Mr.President",
+    characterName: "Coco Jumbo",
+    imageURL: MR_PRESIDENT,
+    debutSeasons: [5]
+  },
+  {
+    standName: "Chariot Requiem",
+    characterName: "Jean Pierre Polnareff",
+    imageURL: CHARIOT_REQUIEM,
+    debutSeasons: [5]
+  },
+  {
+    standName: "King Crimson",
+    characterName: "Diavolo",
+    imageURL: KING_CRIMSON,
+    debutSeasons: [5]
+  },
+  // maybe more
 ];
 
-let standsArray = [];
-// Your final submission should have much more data than this, and 
-// you should use more than just an array of strings to store it all.
-
-
-// This function adds cards the page to display the data in the array
 function showCards() {
     const cardContainer = document.getElementById("card-container");
     cardContainer.innerHTML = "";
     const templateCard = document.querySelector(".card");
     
-    for (let i = 0; i < titles.length; i++) {
-        let title = titles[i];
-
-        // This part of the code doesn't scale very well! After you add your
-        // own data, you'll need to do something totally different here.
-        let imageURL = "";
-        if (i == 0) {
-            imageURL = FRESH_PRINCE_URL;
-        } else if (i == 1) {
-            imageURL = CURB_POSTER_URL;
-        } else if (i == 2) {
-            imageURL = EAST_LOS_HIGH_POSTER_URL;
-        }
+    for (let i = 0; i < standsArray.length; i++) {
+        let standName = standsArray[i].standName;
+        let imageURL = standsArray[i].imageURL;
 
         const nextCard = templateCard.cloneNode(true); // Copy the template card
-        editCardContent(nextCard, title, imageURL); // Edit title and image
+        editCardContent(nextCard, standName, imageURL); // Edit title and image
         cardContainer.appendChild(nextCard); // Add new card to the container
     }
 }
