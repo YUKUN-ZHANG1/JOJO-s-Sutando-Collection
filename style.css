@@ -21,6 +21,8 @@ body {
 #card-container {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); 
+    grid-template-rows: repeat(auto-fit, minmax(200px, 1fr)); 
+
     justify-content: center;
     gap: 10px;
     margin: 20px;
