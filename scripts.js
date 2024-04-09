@@ -125,7 +125,7 @@ let standsArray = [
     standName: "Echoes ACT 3",
     characterName: "Koichi Hirose",
     imageURL: ECHOES_ACT3,
-    debutSeasons: [4，5]
+    debutSeasons: [4, 5]
   },
   {
     standName: "Heaven's Door",
@@ -227,28 +227,29 @@ function showCards() {
     
     for (let i = 0; i < standsArray.length; i++) {
         let standName = standsArray[i].standName;
+        let characterName = standsArray[i].characterName;
         let imageURL = standsArray[i].imageURL;
-
+        let debutSeasons = standsArray[i].debutSeasons;
         const nextCard = templateCard.cloneNode(true); // Copy the template card
-        editCardContent(nextCard, standName, imageURL); // Edit title and image
+        editCardContent(nextCard, standName,characterName, imageURL,debutSeasons); // Edit title and image
         cardContainer.appendChild(nextCard); // Add new card to the container
     }
 }
 
-function editCardContent(card, newTitle, newImageURL) {
+function editCardContent(card, newStandName,newCharacterName, newImageURL, newdebutSeasons) {
     card.style.display = "block";
 
     const cardHeader = card.querySelector("h2");
-    cardHeader.textContent = newTitle;
+    cardHeader.textContent = newStandName;
 
     const cardImage = card.querySelector("img");
     cardImage.src = newImageURL;
     cardImage.alt = newTitle + " Poster";
-
-    // You can use console.log to help you debug!
-    // View the output by right clicking on your website,
-    // select "Inspect", then click on the "Console" tab
-    console.log("new card:", newTitle, "- html: ", card);
+    const cardStandUser = card.querySelector("b2");
+    cardCharacterName.textContent = "Stand user : " + newCharacterName;
+    const cardSeasons = card.querySelector("b2");
+    cardCharacterName.textContent = "Appeared in season : " + newdebutSeasons;
+    console.log("new card:", newStandName, "- html: ", card);
 }
 
 // This calls the addCards() function when the page is first loaded
