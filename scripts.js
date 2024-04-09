@@ -231,12 +231,12 @@ function showCards() {
         let imageURL = standsArray[i].imageURL;
         let debutSeasons = standsArray[i].debutSeasons;
         const nextCard = templateCard.cloneNode(true); // Copy the template card
-        editCardContent(nextCard, standName,characterName, imageURL,debutSeasons); // Edit title and image
+        editCardContent(nextCard, standName, characterName, imageURL, debutSeasons); // Edit title and image
         cardContainer.appendChild(nextCard); // Add new card to the container
     }
 }
 
-function editCardContent(card, newStandName,newCharacterName, newImageURL, newdebutSeasons) {
+function editCardContent(card, newStandName, newCharacterName, newImageURL, newDebutSeasons) {
     card.style.display = "block";
 
     const cardHeader = card.querySelector("h2");
@@ -244,13 +244,17 @@ function editCardContent(card, newStandName,newCharacterName, newImageURL, newde
 
     const cardImage = card.querySelector("img");
     cardImage.src = newImageURL;
-    cardImage.alt = newTitle + " Poster";
-    const cardStandUser = card.querySelector("b2");
-    cardCharacterName.textContent = "Stand user : " + newCharacterName;
-    const cardSeasons = card.querySelector("b2");
-    cardCharacterName.textContent = "Appeared in season : " + newdebutSeasons;
+    cardImage.alt = newStandName + " Poster";
+
+    const cardStandUser = card.querySelector("h2");
+    cardStandUser.textContent = "Stand user: " + newCharacterName;
+
+    const cardSeasons = card.querySelector("h2");
+    cardSeasons.textContent = "Appeared in season: " + newDebutSeasons.join(', ');
+
     console.log("new card:", newStandName, "- html: ", card);
 }
+
 
 // This calls the addCards() function when the page is first loaded
 document.addEventListener("DOMContentLoaded", showCards);
