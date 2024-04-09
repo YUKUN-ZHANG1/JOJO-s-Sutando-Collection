@@ -246,10 +246,10 @@ function editCardContent(card, newStandName, newCharacterName, newImageURL, newD
     cardImage.src = newImageURL;
     cardImage.alt = newStandName + " Poster";
 
-    const cardStandUser = card.querySelector("h2");
+    const cardStandUser = card.querySelector("p");
     cardStandUser.textContent = "Stand user: " + newCharacterName;
 
-    const cardSeasons = card.querySelector("h2");
+    const cardSeasons = card.querySelector("p");
     cardSeasons.textContent = "Appeared in season: " + newDebutSeasons.join(', ');
 
     console.log("new card:", newStandName, "- html: ", card);
