@@ -246,11 +246,11 @@ function editCardContent(card, newStandName, newCharacterName, newImageURL, newD
     cardImage.src = newImageURL;
     cardImage.alt = newStandName + " Poster";
 
-    const cardStandUser = card.querySelector("p");
-    cardStandUser.textContent = "Stand user: " + newCharacterName;
+    const cardStandUser = card.querySelector(".stand-user");
+    cardStandUser.textContent = newCharacterName;
 
-    const cardSeasons = card.querySelector("p");
-    cardSeasons.textContent = "Appeared in season: " + newDebutSeasons.join(', ');
+    const cardSeasons = card.querySelector(".seasons");
+    cardSeasons.textContent = newDebutSeasons.join(', ');
 
     console.log("new card:", newStandName, "- html: ", card);
 }
@@ -265,6 +265,6 @@ function quoteAlert() {
 }
 
 function removeLastCard() {
-    titles.pop(); // Remove last item in titles array
+    standsArray.pop.pop(); // Remove last item in titles array
     showCards(); // Call showCards again to refresh
 }
