@@ -19,7 +19,7 @@ body {
 }
 
 #card-container {
-    display: flex;
+    display: grid;
     justify-content: center;
     margin: 20px;
 }
