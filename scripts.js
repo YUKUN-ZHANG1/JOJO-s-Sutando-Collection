@@ -269,7 +269,12 @@ function removeLastCard() {
     showCards(); // Call showCards again to refresh
 }
 
-function sortingByStand(standsArray){
+function sortingByStand(){
+    quickSort(standsArray);
+    showCards();
+}
+
+function quickSort(standsArray){
     if(standsArray.length<=1){
        return standsArray;
     }
@@ -282,5 +287,5 @@ function sortingByStand(standsArray){
             right.push(standsArray[i]);
         }
     }
-    return  sortingByStand(left).concat(mid, quickSort(right));
+    return  quickSort(left).concat(mid, quickSort(right));
 }
