@@ -303,6 +303,17 @@ function sortingByCharacter() {
     showCards();
 }
 
+function sortingByCSeason() {
+    for(let i = standsArray.length; i>0; i--){
+        for(let j = i-1; j>=0; j--){
+            if(standsArray[i].debutSeasons[0] > standsArray[j].debutSeasons[0]){
+                [standsArray[j], standsArray[i]] = [standsArray[i], standsArray[j]];
+            }
+        }
+    }
+    showCards();
+}
+
 function sortingByStand() {
     standsArray = quickSort(standsArray);
     showCards();
