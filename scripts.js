@@ -275,7 +275,7 @@ function quickSort(standsArray){
     }
     const medium = standsArray[0].standName, mid = standsArray[0];
     const left = [], right = [];
-    for(let i=0; i<standsArray.length; i++){
+    for(let i=1; i<standsArray.length; i++){
         if(standsArray[i].standName<medium){
             left.push(standsArray[i]);
         }else{
