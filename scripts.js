@@ -329,7 +329,7 @@ function removeCard(index){
         standsArray.splice(index,1);
         showCards();
     }else{
-        console.log("this card isn't exit")；
+        console.log("this card isn't exit");
     }
 }
 
@@ -337,7 +337,7 @@ function removeCard(index){
 function editCard(cardID){
     const index = standsArray.findIndex(card=>card.id===cardID);
     if(index==-1){
-        console.log("this card is not exit")；
+        console.log("this card is not exit");
         return; 
     }
     const inputStand = prompt("Enter the Stand Name : ");
