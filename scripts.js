@@ -273,24 +273,28 @@ function quickSort(standsArray) {
     if (standsArray.length <= 1) {
         return standsArray;
     }
-    
-    const pivotIndex = Math.floor(standsArray.length / 2);
-    const pivot = standsArray.splice(pivotIndex, 1)[0];
-    const left = [], right = [];
 
-    for (const item of standsArray) {
-        if (item.standName < pivot.standName) {
-            left.push(item);
+    const pivotIndex = Math.floor(standsArray.length / 2);
+    const pivot = standsArray[pivotIndex];
+    const left = [];
+    const right = [];
+
+    for (let i = 0; i < standsArray.length; i++) {
+        if (i === pivotIndex) continue;
+
+        if (standsArray[i].standName < pivot.standName) {
+            left.push(standsArray[i]);
         } else {
-            right.push(item);
+            right.push(standsArray[i]);
         }
     }
 
     return quickSort(left).concat(pivot, quickSort(right));
 }
 
-function sortingByStand(){
+function sortingByStand() {
     standsArray = quickSort(standsArray);
     showCards();
 }
+
 
