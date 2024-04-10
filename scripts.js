@@ -321,7 +321,7 @@ function sortingByStand() {
 
 
 
-function removeCard(index){
+function removeCard(){
     const index = parseInt(prompt("Who do you want to remove? Enter the number:"));
     if(index>=1||index<=standsArray.length){
         standsArray.splice(index,1);
@@ -374,7 +374,7 @@ function addCard(){
         imageURL: inputImage,
         debutSeasons: inputSeason
     });
-    if(inputSeasonNumbers!=null){
+    if(isNaN(inputSeasonNumbers)||inputSeasonNumbers!=null){
         for(let i=0; i<inputSeasonNumbers; i++){
             inputSeason.push(parseInt(prompt("Enter the NO."+(1+i)+"seasons of appearance : ")))
         }
