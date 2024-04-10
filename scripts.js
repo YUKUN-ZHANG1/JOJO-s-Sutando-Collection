@@ -286,7 +286,7 @@ function quickSort(standsArray){
 }
 
 function sortingByStand(){
-    quickSort(standsArray);
+    standsArray = quickSort(standsArray);
     showCards();
 }
 
