@@ -1,27 +1,4 @@
-/**
- * Data Catalog Project Starter Code - SEA Stage 2
- *
- * This file is where you should be doing most of your work. You should
- * also make changes to the HTML and CSS files, but we want you to prioritize
- * demonstrating your understanding of data structures, and you'll do that
- * with the JavaScript code you write in this file.
- * 
- * The comments in this file are only to help you learn how the starter code
- * works. The instructions for the project are in the README. That said, here
- * are the three things you should do first to learn about the starter code:
- * - 1 - Change something small in index.html or style.css, then reload your 
- *    browser and make sure you can see that change. 
- * - 2 - On your browser, right click anywhere on the page and select
- *    "Inspect" to open the browser developer tools. Then, go to the "console"
- *    tab in the new window that opened up. This console is where you will see
- *    JavaScript errors and logs, which is extremely helpful for debugging.
- *    (These instructions assume you're using Chrome, opening developer tools
- *    may be different on other browsers. We suggest using Chrome.)
- * - 3 - Add another string to the titles array a few lines down. Reload your
- *    browser and observe what happens. You should see a fourth "card" appear
- *    with the string you added to the array, but a broken image.
- * 
- */
+
 
 
 const STAR_PLATINUM = "https://static.jojowiki.com/images/thumb/c/ca/latest/20200927002609/Star_Platinum_SC_Infobox_Anime.png/800px-Star_Platinum_SC_Infobox_Anime.png";
@@ -226,7 +203,7 @@ function showCards() {
     const templateCard = document.querySelector(".card");
     
     for (let i = 0; i < standsArray.length; i++) {
-        let standName = i+", "+standsArray[i].standName;
+        let standName = (i+1)+", "+standsArray[i].standName;
         let characterName = standsArray[i].characterName;
         let imageURL = standsArray[i].imageURL;
         let debutSeasons = standsArray[i].debutSeasons;
@@ -322,7 +299,7 @@ function sortingByStand() {
 
 
 function removeCard(){
-    const index = parseInt(prompt("Who do you want to remove? Enter the number:"));
+    const index = parseInt(prompt("Who do you want to remove? Enter the number:"))-1;
     if(index>=1||index<=standsArray.length){
         standsArray.splice(index,1);
         showCards();
@@ -333,7 +310,7 @@ function removeCard(){
 
 
 function editCard(){
-    const index = parseInt(prompt("Who do you want to edit? Enter the number:"));
+    const index = parseInt(prompt("Who do you want to edit? Enter the number:"))-1;
     if(index<1||index>standsArray.length){
         console.log("this card is not exit");
         return; 
@@ -343,16 +320,16 @@ function editCard(){
     const inputImage = prompt("Enter the URL of image of the Stand : ");
     const inputSeasonNumbers = parseInt(prompt("Enter the Number of seasons of appearance : "));
     const inputSeason = [];
-    if(inputStand!=null){
+    if(inputStand!=null&&inputStand!=""){
         standsArray[index].standName = inputStand;
     }
-    if(inputCharacter!=null){
+    if(inputCharacter!=null&&inputCharacter!=""){
         standsArray[index].characterName = inputCharacter;
     }
-    if(inputImage!=null){
+    if(inputImage!=null&&inputImage!=""){
         standsArray[index].imageURL = inputImage;
     }
-    if(inputSeasonNumbers!=null){
+    if(isNaN(inputSeasonNumbers)&&inputSeasonNumbers!=null&&inputSeasonNumbers>0){
         for(let i=0; i<inputSeasonNumbers; i++){
             inputSeason.push(parseInt(prompt("Enter the NO."+(1+i)+"seasons of appearance : ")))
         }
@@ -374,13 +351,57 @@ function addCard(){
         imageURL: inputImage,
         debutSeasons: inputSeason
     });
-    if(isNaN(inputSeasonNumbers)||inputSeasonNumbers!=null){
+    if(isNaN(inputSeasonNumbers)&&inputSeasonNumbers!=null&&inputSeasonNumbers>0){
         for(let i=0; i<inputSeasonNumbers; i++){
             inputSeason.push(parseInt(prompt("Enter the NO."+(1+i)+"seasons of appearance : ")))
         }
         standsArray[index].debutSeasons = inputSeason;
     }
     showCards();
+}
+
+function showCategoryBySeason(){
+    const inputSeason = parseInt(prompt("Enter the season you are looking for (number please): "));
+    const cardContainer = document.getElementById("card-container");
+    cardContainer.innerHTML = "";
+    const templateCard = document.querySelector(".card");
+    
+    for (let i = 0; i < standsArray.length; i++) {
+        let isSeason = false;
+        for(let j =0; j<standsArray[i].debutSeasons.length;j++){
+            if(standsArray[i].debutSeasons[j]==inputSeason){
+                isSeason=true;
+            }
+        }
+        if(isSeason){
+            let standName = (i+1)+", "+standsArray[i].standName;
+            let characterName = standsArray[i].characterName;
+            let imageURL = standsArray[i].imageURL;
+            let debutSeasons = standsArray[i].debutSeasons;
+            const nextCard = templateCard.cloneNode(true); 
+            editCardContent(nextCard, standName, characterName, imageURL, debutSeasons); 
+            cardContainer.appendChild(nextCard); 
+        }
+    }
+}
+
+function showCategoryByCharacter(){
+    const inputName = prompt("Enter the Character you are looking for: ");
+    const cardContainer = document.getElementById("card-container");
+    cardContainer.innerHTML = "";
+    const templateCard = document.querySelector(".card");
+    
+    for (let i = 0; i < standsArray.length; i++) {
+        if(standsArray[i].characterName==inputName){
+            let standName = (i+1)+", "+standsArray[i].standName;
+            let characterName = standsArray[i].characterName;
+            let imageURL = standsArray[i].imageURL;
+            let debutSeasons = standsArray[i].debutSeasons;
+            const nextCard = templateCard.cloneNode(true); 
+            editCardContent(nextCard, standName, characterName, imageURL, debutSeasons); 
+            cardContainer.appendChild(nextCard); 
+        }
+    }
 }
 
 
