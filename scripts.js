@@ -293,7 +293,7 @@ function quickSort(standsArray) {//This quick sort I just wanted to try to see i
 }
 
 function sortingByCharacter() {
-    for(let i = standsArray.length; i>0; i--){
+    for(let i = standsArray.length-1; i>0; i--){
         for(let j = i-1; j>=0; j--){
             if(standsArray[i].characterName > standsArray[j].characterName){
                 [standsArray[j], standsArray[i]] = [standsArray[i], standsArray[j]];
@@ -304,7 +304,7 @@ function sortingByCharacter() {
 }
 
 function sortingBySeason() {
-    for(let i = standsArray.length; i>0; i--){
+    for(let i = standsArray.length-1; i>0; i--){
         for(let j = i-1; j>=0; j--){
             if(standsArray[i].debutSeasons[0] > standsArray[j].debutSeasons[0]){
                 [standsArray[j], standsArray[i]] = [standsArray[i], standsArray[j]];
@@ -348,7 +348,7 @@ function editCard(cardID){
     if(inputStand!=null){
         standsArray[index].standName = inputStand;
     }
-    if(characterName!=null){
+    if(inputCharacter!=null){
         standsArray[index].characterName = inputCharacter;
     }
     if(inputImage!=null){
