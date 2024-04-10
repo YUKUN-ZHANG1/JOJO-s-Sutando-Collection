@@ -293,8 +293,8 @@ function quickSort(standsArray) {//This quick sort I just wanted to try to see i
 }
 
 function sortingByCharacter() {
-    for(let i = 0; i<standsArray.length-1; i++){
-        for(let j = i+1; j<standsArray.length; j++){
+    for(let i = standsArray.length; i>0; i--){
+        for(let j = i-1; j>=0; j--){
             if(standsArray[i].characterName > standsArray[j].characterName){
                 [standsArray[j], standsArray[i]] = [standsArray[i], standsArray[j]];
             }
