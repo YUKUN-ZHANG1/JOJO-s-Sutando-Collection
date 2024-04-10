@@ -269,17 +269,12 @@ function removeLastCard() {
     showCards(); // Call showCards again to refresh
 }
 
-function sortingByStand(){
-    quickSort(standsArray);
-    showCards();
-}
-
 function quickSort(standsArray){
     if(standsArray.length<=1){
        return standsArray;
     }
-    let medium = standsArray[0].standName, mid = standsArray[0];
-    let left = [], right = [];
+    const medium = standsArray[0].standName, mid = standsArray[0];
+    const left = [], right = [];
     for(let i=0; i<standsArray.length; i++){
         if(standsArray[i].standName<medium){
             left.push(standsArray[i]);
@@ -289,3 +284,9 @@ function quickSort(standsArray){
     }
     return  quickSort(left).concat(mid, quickSort(right));
 }
+
+function sortingByStand(){
+    quickSort(standsArray);
+    showCards();
+}
+
