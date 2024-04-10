@@ -336,16 +336,14 @@ function removeCard(index){
 
 function editCard(cardID){
     const index = standsArray.findIndex(card=>card.id===cardID);
-    if(index!=-1){
-        standsArray.splice(index,1);
-        showCards();
-    }else{
-        console.log("this card isn't exit")；
+    if(index==-1){
+        console.log("this card is not exit")；
+        return; 
     }
     const inputStand = prompt("Enter the Stand Name : ");
     const inputCharacter = prompt("Enter the Stand User: ");
     const inputImage = prompt("Enter the URL of image of the Stand : ");
-    const inputSeasonNumbers = prompt("Enter the Number of seasons of appearance : ");
+    const inputSeasonNumbers = parseInt(prompt("Enter the Number of seasons of appearance : "));
     const inputSeason = [];
     if(inputStand!=null){
         standsArray[index].standName = inputStand;
@@ -358,10 +356,11 @@ function editCard(cardID){
     }
     if(inputSeasonNumbers!=null){
         for(let i=0; i<inputSeasonNumbers; i++){
-            inputSeason.push(prompt("Enter the NO."+i+"seasons of appearance : "))
+            inputSeason.push(parseInt(prompt("Enter the NO."+i+"seasons of appearance : ")))
         }
-        standsArray.debutSeasons = inputSeason;
+        standsArray[index].debutSeasons = inputSeason;
     }
+    showCards();
 }
 
 
