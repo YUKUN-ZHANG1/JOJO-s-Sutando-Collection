@@ -319,4 +319,49 @@ function sortingByStand() {
     showCards();
 }
 
+function removeThisCard(cardID){
+    const i = standsArray.findIndex(card=>card.id===cardID);
+    removeCard(i);
+}
+
+function removeCard(index){
+    if(index!=-1){
+        standsArray.splice(index,1);
+        showCards();
+    }else{
+        console.log("this card isn't exit")；
+    }
+}
+
+
+function editCard(cardID){
+    const index = standsArray.findIndex(card=>card.id===cardID);
+    if(index!=-1){
+        standsArray.splice(index,1);
+        showCards();
+    }else{
+        console.log("this card isn't exit")；
+    }
+    const inputStand = prompt("Enter the Stand Name : ");
+    const inputCharacter = prompt("Enter the Stand User: ");
+    const inputImage = prompt("Enter the URL of image of the Stand : ");
+    const inputSeasonNumbers = prompt("Enter the Number of seasons of appearance : ");
+    const inputSeason = [];
+    if(inputStand!=null){
+        standsArray[index].standName = inputStand;
+    }
+    if(characterName!=null){
+        standsArray[index].characterName = inputCharacter;
+    }
+    if(inputImage!=null){
+        standsArray[index].imageURL = inputImage;
+    }
+    if(inputSeasonNumbers!=null){
+        for(let i=0; i<inputSeasonNumbers; i++){
+            inputSeason.push(prompt("Enter the NO."+i+"seasons of appearance : "))
+        }
+        standsArray.debutSeasons = inputSeason;
+    }
+}
+
 
