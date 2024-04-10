@@ -296,7 +296,7 @@ function sortingByCharacter() {
     for(let i = 0; i<standsArray.length-1; i++){
         for(let j = i+1; j<standsArray.length; j++){
             if(standsArray[i].characterName>standsArray[j].characterName){
-                [standsArray[i], standsArray[j]] = [standsArray[j], standsArray[i]];
+                [standsArray[j], standsArray[i]] = [standsArray[i], standsArray[j]];
             }
         }
     }
