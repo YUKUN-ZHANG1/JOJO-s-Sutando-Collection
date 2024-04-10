@@ -362,22 +362,18 @@ function editCard(){
 }
 
 function addCard(){
-    const index = standsArray,length;
+    const index = standsArray.length;
     const inputStand = prompt("Enter the Stand Name : ");
     const inputCharacter = prompt("Enter the Stand User: ");
     const inputImage = prompt("Enter the URL of image of the Stand : ");
     const inputSeasonNumbers = parseInt(prompt("Enter the Number of seasons of appearance : "));
     const inputSeason = [];
-    standsArray.push({standName,characterName,imageURL,debutSeasons[]})
-    if(inputStand!=null){
-        standsArray[index].standName = inputStand;
-    }
-    if(inputCharacter!=null){
-        standsArray[index].characterName = inputCharacter;
-    }
-    if(inputImage!=null){
-        standsArray[index].imageURL = inputImage;
-    }
+    standsArray.push({
+        standName: inputStand,
+        characterName: inputCharacter,
+        imageURL: inputImage,
+        debutSeasons: inputSeason
+    });
     if(inputSeasonNumbers!=null){
         for(let i=0; i<inputSeasonNumbers; i++){
             inputSeason.push(parseInt(prompt("Enter the NO."+(1+i)+"seasons of appearance : ")))
