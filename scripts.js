@@ -226,7 +226,7 @@ function showCards() {
     const templateCard = document.querySelector(".card");
     
     for (let i = 0; i < standsArray.length; i++) {
-        let standName = standsArray[i].standName;
+        let standName = i+", "+standsArray[i].standName;
         let characterName = standsArray[i].characterName;
         let imageURL = standsArray[i].imageURL;
         let debutSeasons = standsArray[i].debutSeasons;
@@ -247,10 +247,10 @@ function editCardContent(card, newStandName, newCharacterName, newImageURL, newD
     cardImage.alt = newStandName + " Poster";
 
     const cardStandUser = card.querySelector(".stand-user");
-    cardStandUser.textContent = newCharacterName;
+    cardStandUser.textContent =  "Stand user: "+ newCharacterName;
 
     const cardSeasons = card.querySelector(".seasons");
-    cardSeasons.textContent = newDebutSeasons.join(', ');
+    cardSeasons.textContent = " Appeared season: "+newDebutSeasons.join(', ');
 
     console.log("new card:", newStandName, "- html: ", card);
 }
@@ -306,7 +306,7 @@ function sortingByCharacter() {
 function sortingBySeason() {
     for(let i = standsArray.length-1; i>0; i--){
         for(let j = i-1; j>=0; j--){
-            if(standsArray[i].debutSeasons[0] > standsArray[j].debutSeasons[0]){
+            if(standsArray[i].debutSeasons[0] < standsArray[j].debutSeasons[0]){
                 [standsArray[j], standsArray[i]] = [standsArray[i], standsArray[j]];
             }
         }
@@ -319,14 +319,11 @@ function sortingByStand() {
     showCards();
 }
 
-function removeThisCard(cardButton){
-    const card = cardButton.parentElement;
-    const index = Array.from(card.parentElement.children).indexOf(card);
-    removeCard(index);
-}
+
 
 function removeCard(index){
-    if(index!=-1){
+    const index = parseInt(prompt("Who do you want to remove? Enter the number:"));
+    if(index>=1||index<=standsArray.length){
         standsArray.splice(index,1);
         showCards();
     }else{
@@ -335,9 +332,9 @@ function removeCard(index){
 }
 
 
-function editCard(cardID){
-    const index = standsArray.findIndex(card=>card.id===cardID);
-    if(index==-1){
+function editCard(){
+    const index = parseInt(prompt("Who do you want to edit? Enter the number:"));
+    if(index<1||index>standsArray.length){
         console.log("this card is not exit");
         return; 
     }
@@ -357,11 +354,38 @@ function editCard(cardID){
     }
     if(inputSeasonNumbers!=null){
         for(let i=0; i<inputSeasonNumbers; i++){
-            inputSeason.push(parseInt(prompt("Enter the NO."+i+"seasons of appearance : ")))
+            inputSeason.push(parseInt(prompt("Enter the NO."+(1+i)+"seasons of appearance : ")))
         }
         standsArray[index].debutSeasons = inputSeason;
     }
     showCards();
 }
+
+function addCard(){
+    const index = standsArray,length;
+    const inputStand = prompt("Enter the Stand Name : ");
+    const inputCharacter = prompt("Enter the Stand User: ");
+    const inputImage = prompt("Enter the URL of image of the Stand : ");
+    const inputSeasonNumbers = parseInt(prompt("Enter the Number of seasons of appearance : "));
+    const inputSeason = [];
+    standsArray.push({standName,characterName,imageURL,debutSeasons[]})
+    if(inputStand!=null){
+        standsArray[index].standName = inputStand;
+    }
+    if(inputCharacter!=null){
+        standsArray[index].characterName = inputCharacter;
+    }
+    if(inputImage!=null){
+        standsArray[index].imageURL = inputImage;
+    }
+    if(inputSeasonNumbers!=null){
+        for(let i=0; i<inputSeasonNumbers; i++){
+            inputSeason.push(parseInt(prompt("Enter the NO."+(1+i)+"seasons of appearance : ")))
+        }
+        standsArray[index].debutSeasons = inputSeason;
+    }
+    showCards();
+}
+
 
 
