@@ -269,20 +269,24 @@ function removeLastCard() {
     showCards(); // Call showCards again to refresh
 }
 
-function quickSort(standsArray){
-    if(standsArray.length<=1){
-       return standsArray;
+function quickSort(standsArray) {
+    if (standsArray.length <= 1) {
+        return standsArray;
     }
-    const medium = standsArray[0].standName, mid = standsArray[0];
+    
+    const pivotIndex = Math.floor(standsArray.length / 2);
+    const pivot = standsArray.splice(pivotIndex, 1)[0];
     const left = [], right = [];
-    for(let i=1; i<standsArray.length; i++){
-        if(standsArray[i].standName<medium){
-            left.push(standsArray[i]);
-        }else{
-            right.push(standsArray[i]);
+
+    for (const item of standsArray) {
+        if (item.standName < pivot.standName) {
+            left.push(item);
+        } else {
+            right.push(item);
         }
     }
-    return  quickSort(left).concat(mid, quickSort(right));
+
+    return quickSort(left).concat(pivot, quickSort(right));
 }
 
 function sortingByStand(){
