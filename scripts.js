@@ -269,7 +269,7 @@ function removeLastCard() {
     showCards(); // Call showCards again to refresh
 }
 
-function quickSort(standsArray) {
+function quickSort(standsArray) {//This quick sort I just wanted to try to see if I remembered the logic that
     if (standsArray.length <= 1) {
         return standsArray;
     }
@@ -290,6 +290,17 @@ function quickSort(standsArray) {
     }
 
     return quickSort(left).concat(pivot, quickSort(right));
+}
+
+function sortingByCharacter() {
+    for(let i = 0; i<standsArray.length-1; i++){
+        for(let j = i+1; j<standsArray.length; j++){
+            if(standsArray[i].characterName<standsArray[j].characterName){
+                [standsArray[i], standsArray[j]] = [standsArray[j], standsArray[i]];
+            }
+        }
+    }
+    showCards();
 }
 
 function sortingByStand() {
