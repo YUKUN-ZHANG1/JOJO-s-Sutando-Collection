@@ -319,9 +319,10 @@ function sortingByStand() {
     showCards();
 }
 
-function removeThisCard(cardID){
-    const i = standsArray.findIndex(card=>card.id===cardID);
-    removeCard(i);
+function removeThisCard(cardButton){
+    const card = cardButton.parentElement;
+    const index = Array.from(card.parentElement.children).indexOf(card);
+    removeCard(index);
 }
 
 function removeCard(index){
